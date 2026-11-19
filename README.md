@@ -1,4 +1,4 @@
-# Hearth
+# Hearth - Role Based Dining Operations System
 
 Hearth is the system that runs a small dining room. Guests look at the menu, ask for a table, and send an order. The kitchen and floor staff move that order from received to served. Managers keep the menu, the staff list, and the day’s numbers. An admin decides who can sign in and what each person is allowed to do.
 
