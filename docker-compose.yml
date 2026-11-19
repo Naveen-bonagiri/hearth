@@ -1,0 +1,24 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: hearth-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: hearth
+      MYSQL_USER: hearth
+      MYSQL_PASSWORD: hearth
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - hearth-mysql:/var/lib/mysql
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+
+volumes:
+  hearth-mysql:

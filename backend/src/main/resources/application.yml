@@ -1,0 +1,30 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/hearth?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=utf8}
+    username: ${DB_USER:hearth}
+    password: ${DB_PASSWORD:hearth}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        jdbc.time_zone: UTC
+        auto_quote_keyword: true
+  flyway:
+    enabled: true
+    connect-retries: 20
+    connect-retries-interval: 3
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+hearth:
+  jwt:
+    secret: ${JWT_SECRET:hearth-dev-secret-change-me-please-32b}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  cors-origins: ${CORS_ORIGINS:http://localhost:5173,http://127.0.0.1:5173}
